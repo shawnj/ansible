@@ -1,2 +1,14 @@
 ---
-- name: deploy app
+
+- name: Install http and php etc
+  yum: name={{ item }} state=present
+  with_items:
+   - httpd
+   - git
+   - python35
+   - mysql-server
+  become: yes
+  become_method: sudo
+
+- debug: 
+    msg: "Complete"

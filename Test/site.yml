@@ -1,8 +1,10 @@
 ---
 - name: Test
-  hosts: localhost
-  connection: local
-  gather_facts: no
+  hosts: [webserver]
+  gather_facts: yes
+  remote_user: ec2-user
+  become: yes
+  become_method: sudo
   tasks:
     - include: tasks/deploy.yml
 
