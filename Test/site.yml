@@ -1,11 +1,13 @@
 ---
 - name: Test
-  hosts: [webserver]
+  hosts: all
   gather_facts: yes
   remote_user: ec2-user
   become: yes
   become_method: sudo
   tasks:
     - include: tasks/deploy.yml
+  roles:
+    - { role: tecris.maven, maven_major: 3, maven_release: 3.5.3, maven_home_parent_directory: /opt }
 
     
